@@ -13,12 +13,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import static com.chagwey.springbootinventorymanagement.utils.Constant.APP_ROOT;
-
-
-@RestController
 @Slf4j
-@RequestMapping(path = APP_ROOT + "/auth")
+@RestController
+@RequestMapping("/auth")
 public class AuthenticationController {
     private AuthenticationManager authenticationManager;
     private UserDetailsServiceImpl userDetailsServiceImpl;

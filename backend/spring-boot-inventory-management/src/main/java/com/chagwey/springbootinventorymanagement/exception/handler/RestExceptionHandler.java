@@ -1,6 +1,5 @@
-package com.chagwey.springbootinventorymanagement.handler;
+package com.chagwey.springbootinventorymanagement.exception.handler;
 
-import com.chagwey.springbootinventorymanagement.exception.ErrorCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package com.chagwey.springbootinventorymanagement.handler;
+package com.chagwey.springbootinventorymanagement.exception.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class ErrorDTO {
-	
-	private Integer httpStatusCode ; // 200, 201, 400
-	private ErrorCode errorCode ; 
-	private String message ;
-	private List < String > errors = new ArrayList < > ( ) ;
+
+    private Integer httpStatusCode; // 200, 201, 400
+    private ErrorCode errorCode;
+    private String message;
+    private List<String> errors = new ArrayList<>();
 
 }

@@ -1,6 +1,7 @@
 package com.chagwey.springbootinventorymanagement.config;
 
 import com.chagwey.springbootinventorymanagement.filter.ApplicationRequestFilter;
+import com.chagwey.springbootinventorymanagement.filter.JWTAccessDeniedHandler;
 import com.chagwey.springbootinventorymanagement.service.auth.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,12 +22,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsServiceImpl userDetailsServiceImpl;
     private ApplicationRequestFilter applicationRequestFilter;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private JWTAccessDeniedHandler jwtAccessDeniedHandler;
 
     @Autowired
-    public SecurityConfiguration(UserDetailsServiceImpl userDetailsServiceImpl, ApplicationRequestFilter applicationRequestFilter, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public SecurityConfiguration(UserDetailsServiceImpl userDetailsServiceImpl, ApplicationRequestFilter applicationRequestFilter, BCryptPasswordEncoder bCryptPasswordEncoder, JWTAccessDeniedHandler jwtAccessDeniedHandler) {
         this.userDetailsServiceImpl = userDetailsServiceImpl;
         this.applicationRequestFilter = applicationRequestFilter;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.jwtAccessDeniedHandler = jwtAccessDeniedHandler;
     }
 
 
@@ -39,6 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/**/authenticate"
                         , "/**/users"
                         , "/**/articles"
+//                        , "/**/categories"
                         , "/swagger-resources"
                         , "/swagger-resources/**"
                         , "/configuration/ui"
@@ -49,7 +53,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         , "/v3/api-docs/**"
                         , "/v2/api-docs")
                 .permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling().accessDeniedHandler(jwtAccessDeniedHandler);
 
         http.addFilterBefore(applicationRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
