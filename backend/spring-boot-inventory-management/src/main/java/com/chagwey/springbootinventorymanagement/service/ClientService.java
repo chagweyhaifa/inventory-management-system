@@ -1,17 +1,18 @@
 package com.chagwey.springbootinventorymanagement.service;
 
+import com.chagwey.springbootinventorymanagement.model.Client;
+
 import java.util.List;
 
-import com.chagwey.springbootinventorymanagement.DTO.ClientDTO;
 
 public interface ClientService {
-	
-	List<ClientDTO> findAll();
 
-	ClientDTO findById(Integer id);
+    List<Client> findAll();
 
-	ClientDTO save(ClientDTO clientDTO);
+    Client findById(Integer id);
 
-	void delete(Integer id);
+    Client save(Client clientDTO);
+
+    void delete(Integer id);
 
 }

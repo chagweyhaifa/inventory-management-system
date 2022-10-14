@@ -7,7 +7,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import com.chagwey.springbootinventorymanagement.DTO.AddressDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,25 +16,25 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Client extends AbstractEntity {
-	
-	private String firstName;
-	
-	private String lastName;
-	
-	@Embedded
-	private Address address;
-	
-	private String image;
-	
-	private String email;
-	
-	private String phoneNumber;
-	
-	@OneToMany(mappedBy="client")
-	List<ClientOrder> clientOrders; 
+
+    private String firstName;
+
+    private String lastName;
+
+    @Embedded
+    private Address address;
+
+    private String image;
+
+    private String email;
+
+    private String phoneNumber;
+
+    @OneToMany(mappedBy = "client")
+    List<ClientOrder> clientOrders;
 
 }

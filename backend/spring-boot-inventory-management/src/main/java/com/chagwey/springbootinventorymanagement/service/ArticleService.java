@@ -2,17 +2,20 @@ package com.chagwey.springbootinventorymanagement.service;
 
 import java.util.List;
 
-import com.chagwey.springbootinventorymanagement.DTO.ArticleDTO;
+
+import com.chagwey.springbootinventorymanagement.model.Article;
 
 public interface ArticleService {
-	
-	ArticleDTO save(ArticleDTO artcleDTO);
 
-	ArticleDTO findById(Integer id);
+    Article save(Article article);
 
-	ArticleDTO findByCode(String codeArticle);
+    Article update(Article article);
 
-	List<ArticleDTO> findAll();
+    Article findById(Integer id);
 
-	void delete(Integer id);
+    Article findByCode(String codeArticle);
+
+    List<Article> findAll();
+
+    void delete(Integer id);
 }

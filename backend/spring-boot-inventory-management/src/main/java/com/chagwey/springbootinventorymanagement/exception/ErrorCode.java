@@ -13,7 +13,7 @@ public enum ErrorCode {
 	
 	USER_NOT_FOUND ( 4000 ) ,
 	USER_NOT_VALID ( 4001 ) ,
-	// TODO complete the rest of the Error Codes
+
 	
 	CLIENT_NOT_FOUND ( 5000 ) ,
 	CLIENT_NOT_VALID ( 5001 ) ,

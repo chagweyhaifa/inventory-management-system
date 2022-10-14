@@ -6,37 +6,37 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 @Data
 @Entity
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
-public class Company  extends AbstractEntity{
-	
-	private String name;
-	
-	private String description;
-	
-	private Address address;
-	
-	private String codeFiscal;
-	
-	private String photo;
-	
-	private String email;
-	
-	private String phoneNumber;
-	
-	private String website;
-	
-	@OneToMany(mappedBy="company")
-	List<User> users;
-	
-	@OneToMany(mappedBy="company")
-	List<Article> articles;
+@NoArgsConstructor
+public class Company extends AbstractEntity {
+
+    private String name;
+
+    private String description;
+
+    private Address address;
+
+    private String codeFiscal;
+
+    private String photo;
+
+    private String email;
+
+    private String phoneNumber;
+
+    private String website;
+
+    @OneToMany(mappedBy = "company")
+    @JsonIgnoreProperties({"company"})
+    List<User> users;
+
+    @OneToMany(mappedBy = "company")
+    List<Article> articles;
 
 }

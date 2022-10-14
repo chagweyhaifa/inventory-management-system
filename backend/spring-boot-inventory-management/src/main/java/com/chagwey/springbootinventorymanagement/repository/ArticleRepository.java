@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.chagwey.springbootinventorymanagement.model.Article;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 public interface ArticleRepository extends JpaRepository< Article,Integer> {
 

@@ -6,21 +6,21 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 @Data
 @Entity
-@EqualsAndHashCode(callSuper=true)
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
+@NoArgsConstructor
 public class Role extends AbstractEntity {
-	
-	private String name;
-	
-//	@ManyToOne
-//	@JoinColumn(name="user_id")
-//	User user;
+
+    private String name;
+
+    @ManyToOne
+    @JsonIgnoreProperties({"user"})
+    @JoinColumn(name = "user_id")
+    User user;
 
 }
